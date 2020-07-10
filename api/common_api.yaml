@@ -160,10 +160,6 @@ paths:
       responses:
         '200':
           description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/health_check'
       tags:
         - Health Check
       operationId: get-health-status
@@ -416,17 +412,6 @@ components:
       example:
         name: F
         description: female
-    health_check:
-      description: A response
-      type: object
-      properties:
-        version:
-          type: string
-        health_check:
-          type: boolean
-      example:
-        version: 1.1.0
-        health_check: true
   securitySchemes:
     oAuth2Implicit:
       type: oauth2
