@@ -57,9 +57,11 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/dataset_information'
+                $ref: '#/components/schemas/DCAT_metadata'
         '401':
           description: Unauthorized (401)
+        '404':
+          description: Not Found
       tags:
         - Metadata API
       operationId: get-dataset
@@ -140,19 +142,6 @@ paths:
       description: Liveness Probe
 components:
   schemas:
-    dataset_information:
-      description: A combined object of metadata from the catalogue entry and the dictionary field descriptions.
-      required:
-        - catalogue
-        - dictionaries
-      type: object
-      properties:
-        catalogue:
-          $ref: '#/components/schemas/DCAT_metadata'
-        dictionaries:
-          type: array
-          items:
-            $ref: '#/components/schemas/data_dictionary'
     DCAT_metadata:
       description: A catalogue of the dataset metadata defined to the DCAT specifications.
       type: object
