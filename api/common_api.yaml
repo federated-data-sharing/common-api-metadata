@@ -36,7 +36,7 @@ paths:
           description: Unauthorized (401)
       tags:
         - Metadata API
-      operationId: list-datasets
+      operationId: list_datasets
   '/datasets/{datasetid}':
     get:
       summary: Get Catalogue entry (metadata) and Dictionaries (field descriptions) for dataset.
@@ -64,7 +64,7 @@ paths:
           description: Not Found (404) - Dataset not found
       tags:
         - Metadata API
-      operationId: get-dataset
+      operationId: get_dataset
   '/datasets/{datasetid}/dictionaries':
     get:
       summary: Get Dictionaries (field descriptions) for dataset.
@@ -94,7 +94,7 @@ paths:
           description: Not Found (404) - Dictionaries not found.
       tags:
         - Metadata API
-      operationId: get-dictionaries
+      operationId: get_dictionaries
   '/datasets/{datasetid}/dictionaries/{tableid}':
     get:
       summary: Get a single dataset Dictionary for a specified table.
@@ -131,7 +131,7 @@ paths:
           description: Not Found (404) - Dictionary not found.
       tags:
         - Metadata API
-      operationId: get-table
+      operationId: get_dictionaries_table
   /healthz:
     get:
       summary: Get a health check of the service.
@@ -140,7 +140,7 @@ paths:
           description: OK
       tags:
         - Health Check
-      operationId: get-health-status
+      operationId: get_health_status
       description: Liveness Probe
 components:
   schemas:
