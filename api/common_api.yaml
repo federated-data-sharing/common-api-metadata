@@ -155,28 +155,7 @@ components:
             $ref: '#/components/schemas/data_dictionary'
     DCAT_metadata:
       description: A catalogue of the dataset metadata defined to the DCAT specifications.
-      required:
-        - id
       type: object
-      properties:
-        id:
-          type: string
-        title:
-          type: string
-        description:
-          type: string
-        creator:
-          type: string
-        contactPoint:
-          type: string
-        publisher:
-          $ref: '#/components/schemas/DCAT_metadata_publisher'
-        license:
-          type: string
-        versionInfo:
-          type: string
-        additionalProperties:
-          type: object
       example:
         id: medical_trial_b_results
         title: Medical Trail B Results
@@ -194,20 +173,32 @@ components:
             - tag2
             - tag3
           extra_info: Some additional information.
-    DCAT_metadata_publisher:
-      description: An object containing the publisher name and url for the DCAT catalogue.
-      required:
-        - name
-        - url
-      type: object
       properties:
-        name:
+        id:
           type: string
-        url:
+        title:
           type: string
-      example:
-        name: Example Medical Trial Org
-        url: www.examplemedicaltrial.org
+        description:
+          type: string
+        creator:
+          type: string
+        contactPoint:
+          type: string
+        publisher:
+          type: object
+          properties:
+            name:
+              type: string
+            url:
+              type: string
+        license:
+          type: string
+        version:
+          type: string
+      required:
+        - id
+        - title
+        - creator
     data_dictionary_list:
       description: A list of dataset dictionaries for a particular dataset.
       type: object
