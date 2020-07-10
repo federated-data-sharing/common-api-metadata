@@ -85,11 +85,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/data_dictionary_list'
+                type: array
+                items:
+                  $ref: '#/components/schemas/data_dictionary'
         '401':
           description: Unauthorized (401)
         '404':
-          description: Not Found (404) - Dataset not found.
+          description: Not Found (404) - Dictionaries not found.
       tags:
         - Metadata API
       operationId: get-dictionaries
@@ -188,66 +190,6 @@ components:
         - id
         - title
         - creator
-    data_dictionary_list:
-      description: A list of dataset dictionaries for a particular dataset.
-      type: object
-      properties:
-        dictionaries:
-          type: array
-          items:
-            $ref: '#/components/schemas/data_dictionary'
-      example:
-        dictionaries:
-          - id: table_1
-            fields:
-              - name: sex
-                label: Sex
-                type: text
-                description: 'Sex of patient, factor with levels (F or M)'
-                constraints: SEX
-              - name: age_brc
-                label: Age
-                type: text
-                description: 'Age group, of the forms 18-25 (B1), 25-50 (B2), 50+ (B3).'
-                constraints: AGE
-            lookups:
-              AGE:
-                - name: B1
-                  description: Bracket 1 - 18-25
-                - name: B2
-                  description: Bracket 2 - 25-50
-                - name: B3
-                  description: Bracket 3 - 50+
-              SEX:
-                - name: F
-                  description: female
-                - name: M
-                  description: male
-          - id: table_2
-            fields:
-              - name: sex
-                label: Sex
-                type: text
-                description: 'Sex of patient, factor with levels (F or M)'
-                constraints: SEX
-              - name: age_brc
-                label: Age
-                type: text
-                description: 'Age group, of the forms 18-25 (B1), 25-50 (B2), 50+ (B3).'
-                constraints: AGE
-            lookups:
-              AGE:
-                - name: B1
-                  description: Bracket 1 - 18-25
-                - name: B2
-                  description: Bracket 2 - 25-50
-                - name: B3
-                  description: Bracket 3 - 50+
-              SEX:
-                - name: F
-                  description: female
-                - name: M
-                  description: male
     data_dictionary:
       description: An object containing the list of fields and lookups for a particular dataset table.
       required:
