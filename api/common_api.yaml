@@ -29,7 +29,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/dataset_list'
+                type: array
+                items:
+                  $ref: '#/components/schemas/dataset_summary'
         '401':
           description: Unauthorized (401)
       tags:
@@ -166,24 +168,6 @@ paths:
       description: Liveness Probe
 components:
   schemas:
-    dataset_list:
-      description: A list of dataset summaries.
-      required:
-        - datasets
-      type: object
-      properties:
-        datasets:
-          type: array
-          items:
-            $ref: '#/components/schemas/dataset_summary'
-      example:
-        datasets:
-          - id: hospital_a_patient_results
-            dataset_name: Hospital A Patient Results
-            author: John Smith
-          - id: medical_trial_b_results
-            dataset_name: Medical Trial B Results
-            author: Jane Jones
     dataset_summary:
       description: 'A summary of a dataset, including the dataset ID, the dataset name, and the author of the dataset.'
       required:
