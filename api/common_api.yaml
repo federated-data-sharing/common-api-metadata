@@ -61,7 +61,7 @@ paths:
         '401':
           description: Unauthorized (401)
         '404':
-          description: Not Found
+          description: Not Found (404) - Dataset not found
       tags:
         - Metadata API
       operationId: get-dataset
@@ -128,7 +128,7 @@ paths:
         '401':
           description: Unauthorized (401)
         '404':
-          description: Not Found (404) - Dataset not found.
+          description: Not Found (404) - Dictionary not found.
       tags:
         - Metadata API
       operationId: get-table
