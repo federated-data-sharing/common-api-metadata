@@ -31,7 +31,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/dataset_summary'
+                  $ref: '#/components/schemas/DCAT_metadata'
         '401':
           description: Unauthorized (401)
       tags:
@@ -63,34 +63,6 @@ paths:
       tags:
         - Metadata API
       operationId: get-dataset
-  '/datasets/{datasetid}/catalogue':
-    get:
-      summary: Get Catalogue entry (metadata) for dataset.
-      description: Returns the catalogue metadata for a specified dataset (by dataset ID).
-      parameters:
-        - name: datasetid
-          in: path
-          description: Dataset ID
-          required: true
-          style: simple
-          explode: false
-          schema:
-            type: string
-          example: hospital_a_patient_results
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DCAT_metadata'
-        '401':
-          description: Unauthorized (401)
-        '404':
-          description: Not Found (404) - Dataset not found.
-      tags:
-        - Metadata API
-      operationId: get-catalogue
   '/datasets/{datasetid}/dictionaries':
     get:
       summary: Get Dictionaries (field descriptions) for dataset.
@@ -168,22 +140,6 @@ paths:
       description: Liveness Probe
 components:
   schemas:
-    dataset_summary:
-      description: 'A summary of a dataset, including the dataset ID, the dataset name, and the author of the dataset.'
-      required:
-        - id
-      type: object
-      properties:
-        id:
-          type: string
-        dataset_name:
-          type: string
-        author:
-          type: string
-      example:
-        id: hospital_a_patient_results
-        dataset_name: Hospital A Patient Results
-        author: John Smith
     dataset_information:
       description: A combined object of metadata from the catalogue entry and the dictionary field descriptions.
       required:
